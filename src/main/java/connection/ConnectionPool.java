@@ -35,7 +35,7 @@ public class ConnectionPool {
         pool.offer(conn);
     }
 
-    public int getMaxSize() {
+    public int getSize() {
         return pool.size();
     }
 
