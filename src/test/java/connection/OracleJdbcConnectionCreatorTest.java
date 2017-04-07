@@ -15,15 +15,15 @@ import static org.junit.Assert.assertTrue;
  * Created by Yevgeniy_Alexeyenko on 4/7/2017.
  */
 public class OracleJdbcConnectionCreatorTest {
-    private OracleJdbcConnectionCreator factory;
+    private OracleJdbcConnectionCreator creator;
     private ProxyConnection conn;
 
     private static final String TEST_SQL_QUERY = "select 1 from dual";
 
     @Before
     public void init() {
-        this.factory = new OracleJdbcConnectionCreator();
-        this.conn = factory.createConnection();
+        this.creator = new OracleJdbcConnectionCreator();
+        this.conn = creator.createConnection();
     }
 
     @Test
@@ -32,7 +32,7 @@ public class OracleJdbcConnectionCreatorTest {
     }
 
     @Test
-    public void shouldReturnOne() throws SQLException {
+    public void shouldExecuteQueryAndReturnOne() throws SQLException {
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(TEST_SQL_QUERY);
         int result = 0;

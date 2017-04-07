@@ -1,12 +1,11 @@
 package manager;
 
-import manager.PropertyManager;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Properties;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Yevgeniy_Alexeyenko on 4/7/2017.

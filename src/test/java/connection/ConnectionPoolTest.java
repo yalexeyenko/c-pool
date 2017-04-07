@@ -11,6 +11,7 @@ import static org.junit.Assert.assertNotEquals;
  */
 public class ConnectionPoolTest {
     private ConnectionPool pool;
+    private ProxyConnection conn;
 
     @Before
     public void init() {
@@ -19,16 +20,16 @@ public class ConnectionPoolTest {
 
     @Test
     public void shouldCreateConnectionPoolOfSizeTen() {
-        assertEquals(10, pool.getMaxSize());
+        assertEquals(10, pool.getSize());
     }
 
     @Test
-    public void shouldTakeOneConnectionFromThePool() {
-        ProxyConnection conn = pool.getConnection();
+    public void shouldRetrieveAndReturnConnectionFromThePool() {
+        this.conn = pool.getConnection();
         assertNotEquals(null, conn);
-        assertEquals(9, pool.getMaxSize());
-
+        assertEquals(9, pool.getSize());
         pool.returnConnection(conn);
-        assertEquals(10, pool.getMaxSize());
+        assertEquals(10, pool.getSize());
     }
+
 }
