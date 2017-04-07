@@ -10,26 +10,27 @@ import java.util.Properties;
  */
 public class OracleJdbcConnectionFactory {
     private PropertyManager manager;
-    private Connection conn;
+    private ProxyConnection pConn;
     private Properties properties;
-    private static final String ORACLE_JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
 
     public OracleJdbcConnectionFactory() {
     }
 
-    public Connection createConnection() {
+    public ProxyConnection createConnection() {
         manager = new PropertyManager();
         properties = manager.getOracleJdbcProperties();
+        Connection conn;
         try {
-            Class.forName(ORACLE_JDBC_DRIVER);
+            Class.forName(properties.getProperty("driver"));
             DriverManager.registerDriver(new OracleDriver());
             conn = DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("username"), properties.getProperty("password"));
+            pConn = new ProxyConnection(conn);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return conn;
+        return pConn;
     }
 
 
