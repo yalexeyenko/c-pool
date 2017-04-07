@@ -3,7 +3,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import static org.junit.Assert.*;
 
@@ -12,17 +14,30 @@ import static org.junit.Assert.*;
  */
 public class OracleJdbcConnectionFactoryTest {
     private OracleJdbcConnectionFactory factory;
-    private Connection conn;
+    private ProxyConnection conn;
+
+    private static final String TEST_SQL_QUERY = "select 1 from dual";
 
     @Before
     public void init() {
         this.factory = new OracleJdbcConnectionFactory();
+        this.conn = factory.createConnection();
     }
 
     @Test
     public void shouldCreateOracleJdbcConnection() {
-        this.conn = factory.createConnection();
         assertTrue(conn != null);
+    }
+
+    @Test
+    public void shouldReturnOne() throws SQLException {
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(TEST_SQL_QUERY);
+        int result = 0;
+        while (rs.next()) {
+            result = rs.getInt(1);
+        }
+        assertEquals(1, result);
     }
 
     @After
