@@ -1,0 +1,22 @@
+# Eclipse
+.classpath
+.project
+.settings/
+lib/
+classes/
+
+# Maven
+log/
+target/
+
+# Idea
+.idea/
+*.iml
+*.iws
+target/
+/build/
+
+
+# Other
+*.war
+*.jar
