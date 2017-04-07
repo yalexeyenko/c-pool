@@ -1,26 +1,28 @@
+package connection;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Yevgeniy_Alexeyenko on 4/7/2017.
  */
-public class OracleJdbcConnectionFactoryTest {
-    private OracleJdbcConnectionFactory factory;
+public class OracleJdbcConnectionCreatorTest {
+    private OracleJdbcConnectionCreator factory;
     private ProxyConnection conn;
 
     private static final String TEST_SQL_QUERY = "select 1 from dual";
 
     @Before
     public void init() {
-        this.factory = new OracleJdbcConnectionFactory();
+        this.factory = new OracleJdbcConnectionCreator();
         this.conn = factory.createConnection();
     }
 

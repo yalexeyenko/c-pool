@@ -1,3 +1,6 @@
+package connection;
+
+import manager.PropertyManager;
 import oracle.jdbc.driver.OracleDriver;
 
 import java.sql.Connection;
@@ -8,12 +11,12 @@ import java.util.Properties;
 /**
  * Created by Yevgeniy_Alexeyenko on 4/7/2017.
  */
-public class OracleJdbcConnectionFactory {
+public class OracleJdbcConnectionCreator {
     private PropertyManager manager;
     private ProxyConnection pConn;
     private Properties properties;
 
-    public OracleJdbcConnectionFactory() {
+    public OracleJdbcConnectionCreator() {
     }
 
     public ProxyConnection createConnection() {

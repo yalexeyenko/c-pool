@@ -1,9 +1,10 @@
+package connection;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.Connection;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created by Yevgeniy_Alexeyenko on 4/7/2017.

@@ -1,4 +1,5 @@
-import java.sql.Connection;
+package connection;
+
 import java.util.concurrent.ArrayBlockingQueue;
 
 /**
@@ -6,13 +7,13 @@ import java.util.concurrent.ArrayBlockingQueue;
  */
 public class ConnectionPool {
     private ArrayBlockingQueue<ProxyConnection> pool;
-    private OracleJdbcConnectionFactory factory;
+    private OracleJdbcConnectionCreator factory;
     private int maxSize;
 
     public ConnectionPool(int size) {
         this.maxSize = size;
         this.pool = new ArrayBlockingQueue<ProxyConnection>(maxSize);
-        this.factory = new OracleJdbcConnectionFactory();
+        this.factory = new OracleJdbcConnectionCreator();
         initPool(maxSize);
     }
 
