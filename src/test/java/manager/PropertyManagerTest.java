@@ -23,7 +23,9 @@ public class PropertyManagerTest {
     public void shouldCreateOracleJdbcProperties() {
         properties = manager.getOracleJdbcProperties();
         assertEquals("system", properties.getProperty("username"));
-        assertEquals("admin", properties.getProperty("password"));
+
+        assertEquals("sysadmin1", properties.getProperty("password"));
+//        assertEquals("admin", properties.getProperty("password"));
     }
 
 }
